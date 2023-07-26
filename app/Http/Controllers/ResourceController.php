@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreResourceRequest;
 use App\Http\Requests\UpdateResourceRequest;
 use App\Models\Resource;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ResourceController extends Controller
 {
@@ -29,7 +32,9 @@ class ResourceController extends Controller
      */
     public function store(StoreResourceRequest $request)
     {
-        dd($request->all());
+        $name = Str::slug($request->input('title'), "-")."-".Str::random(4).".".$request->file('resource')->getClientOriginalExtension();
+          $path = $request->file('resource')->storeAs('rias', $name);
+          return dd($path);
     }
 
     /**

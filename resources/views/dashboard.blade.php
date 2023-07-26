@@ -9,7 +9,7 @@
         <form action="{{ route('resources.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
-            <input type="text" name="name" required>
+            <input type="text" name="title" required>
             <input type="file" name="resource" id="resource" required>
             <input type="submit" value="Registro" class="bg-white">
             </form>
